@@ -3,6 +3,7 @@
 
 import collections
 import contextlib
+import datetime
 import functools
 import operator
 import os
@@ -880,6 +881,7 @@ class PyLinter(
                 self._iterate_file_descrs(files_or_modules),
                 files_or_modules,
             )
+        print(f"CHRIS FINISHED {datetime.datetime.now()}")
 
     def check_single_file(self, name, filepath, modname):
         """Check single file
@@ -963,6 +965,7 @@ class PyLinter(
         for descr in self._expand_files(files_or_modules):
             name, filepath, is_arg = descr["name"], descr["path"], descr["isarg"]
             if self.should_analyze_file(name, filepath, is_argument=is_arg):
+                print(f"CHRIS {datetime.datetime.now()} {name}")
                 yield (name, filepath, descr["basename"])
 
     def _expand_files(self, modules):
